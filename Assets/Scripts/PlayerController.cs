@@ -11,6 +11,7 @@ public class NewBehaviourScript : MonoBehaviour
     private const string horizontal = "Horizontal";
     private const string vertical = "Vertical";
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +21,15 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame (El update se llama una vez por frame
     void Update()
     {
-        //Interprestar sentencias de control s = v*t espacio es igual a velocidad por tiempo
-        
-       
+        //Interpretar sentencias de control s = v*t espacio es igual a velocidad por tiempo
+       if(Mathf.Abs(Input.GetAxis(horizontal)) > 0.5f)
+        {
+            this.transform.Translate(new Vector3(Input.GetAxisRaw(horizontal) * speed * Time.deltaTime,0,0));
+        }
+       if (Mathf.Abs(Input.GetAxis(vertical)) > 0.5f)
+        {
+            this.transform.Translate(new Vector3(0, Input.GetAxisRaw(vertical) * speed * Time.deltaTime, 0));
+        }
+
     }
 }
